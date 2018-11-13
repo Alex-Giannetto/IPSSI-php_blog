@@ -1,0 +1,55 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>base_php-resume.md</title>
+      </head>
+      <body>
+        <h1 id="base-de-php-blog">Base de PHP - blog</h1>
+<h2 id="base-de-donn-e">Base de donnée</h2>
+<ul>
+<li>[x] Une table <code>user</code> ayant pour champs : id (auto_increment primary key), username (unique), password</li>
+<li>[ ] Une table <code>article</code> ayant pour champs : id (auto_increment primary key), title, content, image, author (référence à <em>user</em>)</li>
+<li>[ ] Une table<code>commentaire</code> ayant pour champs : id (auto_increment primary key), username, content, article (référence à <em>article</em>)</li>
+</ul>
+<h2 id="liste-des-fonctionnalit-s">Liste des fonctionnalités</h2>
+<h3 id="en-backend">En Backend</h3>
+<ul>
+<li>[x] Un espace d&#39;authentification sécurisé (formulaire de login)</li>
+<li>[ ] Un formulaire pour ajouter un nouvel article, tout les champs sont obligatoire et l&#39;author est l&#39;utilisateur de la session</li>
+<li>[ ] Un espace admin permettant de voir la liste des articles avec des liens pour :<ul>
+<li>[ ] voir un article (lien en target _blank, design du point numéro 3 de la section article)</li>
+<li>[ ] éditer un article</li>
+<li>[ ] supprimer un article</li>
+</ul>
+</li>
+</ul>
+<p>/!\ L&#39;espace d&#39;admin ne doit pas être accessible si on est pas connecté</p>
+<h3 id="en-frontend">En Frontend</h3>
+<h4 id="formulaire-d-inscription">Formulaire d&#39;inscription</h4>
+<ul>
+<li>[x] Faites un formulaire de création d&#39;utilisateur /!\ un username doit être unique <h4 id="article">Article</h4>
+</li>
+<li>[ ] Afficher l&#39;image de l&#39;article une fois à gauche du texte puis une fois à droite du texte (EN PHP, pas en CSS et pas en JS)</li>
+<li>[ ] Un affichage des articles avec une pagination : 5 articles par page</li>
+<li>[ ] Sur chaque article, avoir un lien pour consulter uniquement l&#39;article voulu ainsi que tout les commentaires associés. Il devra y avoir un formulaire pour ajouter un nouveau commentaire.</li>
+</ul>
+<h4 id="navbar">Navbar</h4>
+<ul>
+<li>[x] Si vous êtes authentifié sur le back vous devez voir dans la navbar a droite votre username sinon il faudra afficher 2 boutons (signin signup)</li>
+</ul>
+<h2 id="conseil">Conseil</h2>
+<ul>
+<li>Pensez à la sécurité : mettez en place les actions qui vous semble nécessaire afin de protéger votre site</li>
+<li>Pensez à la facilité de maintiens de votre application : respect des standard de code, la logique métier en anglais, découpage de vos fichiers</li>
+<li>Utilisez au maximum les fonctionnalités de PHP 7.2</li>
+<li>Utilisez un framework CSS (bootstrap/materialize-css)</li>
+</ul>
+<h3 id="todo-ajouter-auteur-dans-affichage-d-un-article">TODO  :   ajouter auteur dans affichage d&#39;un article</h3>
+<h3 id="todo-convertir-date-des-articles">TODO  :   convertir date des articles</h3>
+<h3 id="todo-ajouter-lien-ajouter-article-">TODO  :   ajouter lien &#39;ajouter article&#39;</h3>
+<h3 id="todo-r-parer-toast-de-signin-mauvais-mot-de-passe">TODO  :   réparer toast de signin mauvais mot de passe</h3>
+<h3 id="todo-upload-image">TODO  :   upload image</h3>
+<h3 id="todo-dynamiser-les-images">TODO  :   dynamiser les images</h3>
+
+      </body>
+    </html>

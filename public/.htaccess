@@ -1,0 +1,20 @@
+RewriteEngine On
+#removed %{DOCUMENT_ROOT} as it is unnecessary
+RewriteCond %{REQUEST_URI}  !(\.png|\.jpg|\.gif|\.jpeg|\.bmp|\.css|\.js)$ [NC]
+#Prevent internal redirects
+#RewriteCond %{ENV:REDIRECT_STATUS} !200
+#RewriteRule ^(.*)  index.php [L]
+
+#php_value file_uploads On
+#php_value memory_limit 730M
+#php_value post_max_size 7100M
+#php_value upload_max_filesize 730M
+
+# #### USERS
+RewriteRule ^user/([a-z]+)$ index.php?controller=user&action=$1 [QSA]
+
+# #### ARTICLES
+RewriteRule ^article/add$ index.php?controller=article&action=add [QSA]
+RewriteRule ^article/([a-z]+)/([0-9]+)$ index.php?controller=article&action=$1&id=$2 [QSA]
+RewriteRule ^article/manage/([a-z]+)/$ index.php?controller=article&action=$1&id=$2 [QSA]
+RewriteRule ^article/articles index.php?controller=article&action=listArticle [QSA]
