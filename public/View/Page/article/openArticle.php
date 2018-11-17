@@ -1,7 +1,7 @@
 <div class="articlePage">
     <div class="article__cards">
         <form method="post" enctype="multipart/form-data">
-            <h3 class="cards__date"><?= $return['params']['article'][0]['date'] ?? date('d M Y') ?></h3>
+            <h3 class="cards__date"><?= $return['params']['article'][0]['date'] ?? date('d M Y') ?> - <?= $return['params']['article'][0]['username'] ?></h3>
             <input type="text" name="title" class="cards__title" placeholder="Title"
                    value="<?= $return['params']['article'][0]['title'] ?? '' ?>"/>
             <div class="cards__image" style="background-image: url(/<?= $return['params']['article'][0]['picture'] ?>);"></div>
@@ -28,9 +28,13 @@
             </div>
         </form>
     </div>
-    <?php
-    for ($i = 1; $i < 5; $i++) {
-        include 'comments.php';
-    }
-    ?>
 </div>
+
+<?php
+$i = 0;
+while ($i < count($return['params']['comments'])) { // while …
+    $comment = $return['params']['comments'][$i];
+    include 'comments.php';
+    $i++;
+}
+?>

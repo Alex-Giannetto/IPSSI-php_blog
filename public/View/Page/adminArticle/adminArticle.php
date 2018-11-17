@@ -5,6 +5,7 @@
 
     <div class="container table">
 
+
         <table id="table" class="striped highlight centered">
             <thead>
             <th>ID</th>
@@ -23,8 +24,9 @@
             <?php } ?>
             </tbody>
         </table>
+
+        <div class="buttons buttons--one">
+            <a href="/article/add" class="button button--modify">Add</a>
+        </div>
     </div>
 </div>
-
-
-<!-- TODO : Arranger apparance de la page (border-radius & co)-->

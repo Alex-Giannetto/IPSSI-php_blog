@@ -16,13 +16,13 @@ function signupAction(): array
         // error management
         $error = [];
         if (!checkField($username, ['min' => 4, 'max' => 20])) {
-            $params['message'][] = [
+            $params['messages'][] = [
                 'type' => 'error',
                 'text' => 'Your username must be between 4 and 20 characters',
             ];
         }
         if (!checkField($password, ['min' => 8, 'max' => 30])) {
-            $params['message'][] = [
+            $params['messages'][] = [
                 'type' => 'error',
                 'text' => 'Your password must be between 8 and 30 characters',
             ];
@@ -33,14 +33,16 @@ function signupAction(): array
 
             $result = addUser($username, $encryptedPassword);
 
+
             if ($result) {
                 connectUser($username);
-
             } else {
-                $params['message'][] = [
+
+                $params['messages'][] = [
                     'type' => 'error',
                     'text' => 'This username already exist in the database. Please choose another one',
                 ];
+
             }
         } else {
             $params['values'] = [
@@ -52,7 +54,7 @@ function signupAction(): array
 
     return [
         'view' => 'signup',
-        'params' => $params ?? null
+        'params' => $params
     ];
 
 }

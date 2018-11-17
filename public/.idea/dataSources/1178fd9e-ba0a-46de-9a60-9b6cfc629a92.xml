@@ -1304,89 +1304,136 @@
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
     <table id="326" parent="2" name="articles"/>
-    <table id="327" parent="2" name="user"/>
-    <column id="328" parent="326" name="id">
+    <table id="327" parent="2" name="comments"/>
+    <table id="328" parent="2" name="user"/>
+    <column id="329" parent="326" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="329" parent="326" name="title">
+    <column id="330" parent="326" name="title">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="330" parent="326" name="content">
+    <column id="331" parent="326" name="content">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="331" parent="326" name="picture">
+    <column id="332" parent="326" name="picture">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="332" parent="326" name="date">
+    <column id="333" parent="326" name="date">
       <Position>5</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="333" parent="326" name="author">
+    <column id="334" parent="326" name="author">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="334" parent="326" name="articles_user_id_fk">
+    <index id="335" parent="326" name="articles_user_id_fk">
       <ColNames>author</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="335" parent="326" name="PRIMARY">
+    <key id="336" parent="326" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="336" parent="326" name="articles_user_id_fk">
+    <foreign-key id="337" parent="326" name="articles_user_id_fk">
       <ColNames>author</ColNames>
       <RefSchemaName>blog</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="337" parent="327" name="id">
+    <column id="338" parent="327" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="338" parent="327" name="username">
+    <column id="339" parent="327" name="username">
       <Position>2</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="339" parent="327" name="password">
+    <column id="340" parent="327" name="content">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="341" parent="327" name="date">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="342" parent="327" name="article">
+      <Position>5</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="343" parent="327" name="comments_articles_id_fk">
+      <ColNames>article</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="344" parent="327" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="345" parent="327" name="comments_articles_id_fk">
+      <ColNames>article</ColNames>
+      <RefSchemaName>blog</RefSchemaName>
+      <RefTableName>articles</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="346" parent="328" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="347" parent="328" name="username">
+      <Position>2</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="348" parent="328" name="password">
       <Position>3</Position>
       <DataType>varchar(250)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="340" parent="327" name="user_username_uindex">
+    <index id="349" parent="328" name="user_username_uindex">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="341" parent="327" name="PRIMARY">
+    <key id="350" parent="328" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="342" parent="327" name="user_username_uindex">
+    <key id="351" parent="328" name="user_username_uindex">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>user_username_uindex</UnderlyingIndexName>
     </key>

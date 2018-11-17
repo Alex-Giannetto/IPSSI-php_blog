@@ -1,20 +1,24 @@
 <div class="articlePage">
     <div class="article__cards">
 
-        <h3 class="cards__date"><?= $return['params']['article'][0]['date'] ?></h3>
+        <h3 class="cards__date"><?= $return['params']['article'][0]['date'] ?> - <?= $return['params']['article'][0]['username'] ?></h3>
         <h2 class="cards__title"><?= $return['params']['article'][0]['title'] ?></h2>
-        <div class="cards__image" style="background-image: url(/<?= $return['params']['article'][0]['picture'] ?>) "></div>
+        <div class="cards__image"
+             style="background-image: url(/<?= $return['params']['article'][0]['picture'] ?>)"></div>
         <p class="cards__text">
             <?= $return['params']['article'][0]['content'] ?>
         </p>
     </div>
-
-    <?php
-    for ($i = 1; $i < 5; $i++) {
-        include 'comments.php';
-    }
-    ?>
 </div>
+<?php
+$i = 0;
+while ($i < count($return['params']['comments'])) { // while …
+    $comment = $return['params']['comments'][$i];
+    include 'comments.php';
+    $i++;
+}
+?>
+
 
 <div class="commentsComponent">
     <div class="comments__cards">
@@ -24,14 +28,15 @@
                 <form method="post">
                     <header>
                         <input class="cards__info__name validate" data-lenght="4" type="text" placeholder="Username"
-                               id="username" required>
+                               id="username" name="username" required>
                         <h3 class="cards__info__date"><?= date('d/m/Y') ?></h3>
                     </header>
                     <div class="input-field col s12">
                         <textarea id="comment" class="materialize-textarea validate" data-lenght="2"
-                                  placeholder="Comment" required></textarea>
+                                  placeholder="Comment" name="content" required></textarea>
                     </div>
-                    <div class="center"><input type="submit" class="cards__info__comments" value="Send"></div>
+                    <div class="center"><input type="submit" name="submitConmment" class="cards__info__comments"
+                                               value="Send"></div>
                 </form>
             </div>
         </div>

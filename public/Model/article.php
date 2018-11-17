@@ -43,18 +43,23 @@ function getArticle(int $id): array
     return $query->fetchAll();
 }
 
-function modifyArticle(string $title, string $text, string $file, int $idArticle): bool
+function modifyArticle(string $title, string $text, int $author, int $idArticle, string $file = null): bool
 {
-    $query = getPDO()->prepare(
-        "UPDATE articles " .
-        "SET title = :title, content = :content, picture = :picture " .
-        "WHERE id = :id"
-    );
+    $sql = "UPDATE articles " .
+        "SET title = :title, content = :content, author = :author";
+    $sql .= ($file !== null) ? ', picture = :picture ' : ' ';
+    $sql .= "WHERE id = :id";
+
+    $query = getPDO()->prepare($sql);
 
     $query->bindParam('title', $title);
     $query->bindParam('content', $text);
-    $query->bindParam('picture', $file);
+    $query->bindParam('author', $author);
     $query->bindParam('id', $idArticle);
+
+    if ($file) {
+        $query->bindParam('picture', $file);
+    }
 
     return $query->execute();
 }
@@ -69,4 +74,30 @@ function deleteArticle(int $idArticle): bool
     $query->bindParam('id', $idArticle);
 
     return $query->execute();
+}
+
+function getArticlePage(int $page): array
+{
+    $query = getPDO()->prepare(
+        "SELECT *" .
+        "FROM articles a " .
+        "ORDER BY id DESC " .
+        "LIMIT 5 OFFSET :num "
+    );
+
+    $query->bindValue(':num', $page, PDO::PARAM_INT);
+
+    $query->execute();
+    return $query->fetchAll();
+}
+
+function getNbArticle(): array
+{
+    $query = getPDO()->prepare(
+        "SELECT count(*) as count " .
+        "FROM articles"
+    );
+
+    $query->execute();
+    return $query->fetch();
 }

@@ -5,10 +5,16 @@ RewriteCond %{REQUEST_URI}  !(\.png|\.jpg|\.gif|\.jpeg|\.bmp|\.css|\.js)$ [NC]
 #RewriteCond %{ENV:REDIRECT_STATUS} !200
 #RewriteRule ^(.*)  index.php [L]
 
-#php_value file_uploads On
+
+# (Pour tester erreur upload fichier volumineux)
 #php_value memory_limit 730M
 #php_value post_max_size 7100M
 #php_value upload_max_filesize 730M
+
+# #### HOME
+RewriteRule ^page/([0-9]+)$ index.php?controller=home&action=page&page=$1 [QSA]
+RewriteRule ^$ index.php?controller=home&action=page&page=1 [QSA]
+
 
 # #### USERS
 RewriteRule ^user/([a-z]+)$ index.php?controller=user&action=$1 [QSA]
